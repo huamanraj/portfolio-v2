@@ -1,101 +1,64 @@
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
+import { Github, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div>
+      <div className="mb-12">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/placeholder.svg"
+          alt="Profile"
+          width={120}
+          height={120}
+          className="rounded-full mb-6"
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <h1 className="text-3xl font-bold mb-4">Your Name</h1>
+        <p className="text-muted-foreground mb-4">
+          I&#39;m a fullstack software engineer specializing in building scalable web applications with rich user interfaces using JavaScript.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          Over the years, I&#39;ve worked on multiple startups to build end-to-end products in various domains, and have actively contributed to open source projects.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          If you&#39;d like to collaborate, please{" "}
+          <Link href="mailto:example@email.com" className="underline">
+            send me an email
+          </Link>
+          {" "}or reach out on any of my social handles.
+        </p>
+        <div className="flex gap-4 mb-6">
+          <Button variant="ghost" size="icon" asChild className="rounded-full">
+            <Link href="https://github.com">
+              <Github className="h-5 w-5" />
+              <span className="sr-only">GitHub</span>
+            </Link>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="rounded-full">
+            <Link href="https://twitter.com">
+              <Twitter className="h-5 w-5" />
+              <span className="sr-only">Twitter</span>
+            </Link>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="rounded-full">
+            <Link href="https://linkedin.com">
+              <Linkedin className="h-5 w-5" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="rounded-full">
+            <Link href="https://instagram.com">
+              <Instagram className="h-5 w-5" />
+              <span className="sr-only">Instagram</span>
+            </Link>
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <Button variant="outline" asChild>
+          <Link href="/resume">View Resume</Link>
+        </Button>
+      </div>
     </div>
-  );
+  )
 }
