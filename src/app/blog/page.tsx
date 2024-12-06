@@ -1,45 +1,43 @@
-import Link from "next/link"
-
-const posts = [
-  {
-    title: "Example Blog Post 1",
-    date: "June 1, 2023",
-    readTime: "5 min read",
-    description: "This is a description of the first blog post. It covers topics related to web development and software engineering.",
-    slug: "example-post-1"
-  },
-  {
-    title: "Example Blog Post 2",
-    date: "June 15, 2023",
-    readTime: "8 min read",
-    description: "This is a description of the second blog post. It discusses advanced techniques in frontend development.",
-    slug: "example-post-2"
-  }
-]
+// src/app/blog/page.tsx
+'use client'; 
+import { useEffect, useState } from 'react';
+import { fetchHashnodePosts, Post } from '../../utils/hashnode';
 
 export default function Blog() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const postsData = await fetchHashnodePosts();
+        setPosts(postsData);
+      } catch (err: any) {
+        setError('Failed to fetch posts from Hashnode API');
+      }
+    };
+
+    getPosts();
+  }, []);
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-8">Blog</h1>
-      <div className="space-y-16">
+    <div className=''>
+      <h1 className="text-3xl font-bold mb-4">Blog</h1>
+      {error && <p className="text-red-500">{error}</p>}
+      <div className="space-y-10  ">
         {posts.map((post) => (
-          <article key={post.slug} className="group">
-            <div className="text-sm text-muted-foreground space-x-2">
-              <span>{post.date}</span>
-              <span>—</span>
-              <span>{post.readTime}</span>
-            </div>
-            <Link href={`/blog/${post.slug}`} className="block mt-2">
-              <h3 className="text-xl font-semibold group-hover:text-primary/80 transition-colors">
+          <div key={post.slug} className="group hover:bg-muted p-1 rounded-md">
+            
+            <a href={`https://huamanraj.hashnode.dev/${post.slug}`} className="block mt-2">
+              
+              <h3 className="text-xl text-justify font-semibold group-hover:text-primary/80 transition-colors">
                 {post.title}
               </h3>
-              <p className="text-muted-foreground mt-2">
-                {post.description}
-              </p>
-            </Link>
-          </article>
+              <p className="text-muted-foreground text-justify mt-2">{post.brief}</p>
+            </a>
+          </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
