@@ -27,7 +27,7 @@ export default function RootLayout({
         >
           <div className="min-h-screen bg-background text-foreground">
             <Navigation />
-            <main className="max-w-[700px] mx-auto px-6 py-12">
+            <main className="max-w-[700px] mx-auto px-6 py-10 bg-background">
               {children}
             </main>
           </div>

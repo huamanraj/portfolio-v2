@@ -1,3 +1,5 @@
+import { HashnodeResponse } from "@/types/hashnode";
+
 // src/utils/hashnode.ts
 export interface Post {
     title: string;
@@ -23,25 +25,24 @@ export interface Post {
         }
       }
     `;
-  
-    const response = await fetch('https://gql.hashnode.com', {
-      method: 'POST',
+
+    const response = await fetch("https://gql.hashnode.com", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ query }),
     });
-  
+
     if (!response.ok) {
       throw new Error("Failed to fetch posts from Hashnode API");
     }
-  
-    const data = await response.json();
-    return data.data.publication.posts.edges.map((edge: any) => ({
+
+    const data: HashnodeResponse = await response.json(); // Use your defined interface
+    return data.data.publication.posts.edges.map((edge: { node: Post }) => ({
       title: edge.node.title,
       brief: edge.node.brief,
       slug: edge.node.slug,
-      
     }));
   }
   
