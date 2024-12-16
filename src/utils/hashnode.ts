@@ -12,7 +12,7 @@ export interface Post {
     const query = `
       query {
         publication(host: "huamanraj.hashnode.dev") {
-          posts(first: 10) {
+          posts(first: 20) {
             edges {
               node {
                 title
