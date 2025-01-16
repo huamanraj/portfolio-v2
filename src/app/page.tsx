@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-
+import dp from '../../public/images/dp.jpg'
 import { Button } from "@/components/ui/button"
 import Blog from "./blog/BlogClient";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <div className="mb-12">
         <Image
-          src="https://github.com/huamanraj.png"
+          src={dp}
           alt="Profile"
           width={120}
           height={120}
