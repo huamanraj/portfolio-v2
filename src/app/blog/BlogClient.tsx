@@ -41,8 +41,8 @@ const BlogClient: React.FC<BlogProps> = ({ numberOfBlogs }) => {
   }, [numberOfBlogs]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+    <div className="container   ">
+      <div className=" mb-8">
         <h1 className="text-3xl font-bold">Blog</h1>
         
       </div>
@@ -57,11 +57,11 @@ const BlogClient: React.FC<BlogProps> = ({ numberOfBlogs }) => {
         </div>
       )}
 
-      <div className="space-y-10">
+      <div className="">
         {posts.map((post) => (
           <div 
             key={post.slug} 
-            className="group hover:bg-muted p-4 rounded-md transition-all duration-200"
+            className="group hover:bg-muted py-2  px-1 rounded-md transition-all duration-200"
           >
             <a
               href={`https://huamanraj.hashnode.dev/${post.slug}`}
